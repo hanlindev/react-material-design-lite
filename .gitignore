@@ -33,3 +33,5 @@ node_modules
 # Built files
 /index.js
 /example.js
+
+.vscode

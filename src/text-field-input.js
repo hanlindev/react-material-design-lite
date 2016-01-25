@@ -14,17 +14,41 @@ class TextFieldInput extends React.Component {
       className
     } = this.props;
 
-    const classes = classnames(baseClasses, className);
+    const divClasses = classnames(
+      {
+        'mdl-textfield': true,
+        'mdl-js-textfield': true,
+        'mdl-textfield--floating-label': this.props.floating
+      }
+    )
 
-    return (
-      <input {...this.props} type='text' className={classes} />
+    const classes = classnames(
+      baseClasses,
+      className
     );
+
+    if (this.props.label) {
+      return (
+        <div className={divClasses}>
+          <input {...this.props} type='text' className={classes} />
+          <label className="mdl-textfield__label" htmlFor={this.props.id}>
+            {this.props.label}
+          </label>
+        </div>
+      );
+    } else {
+      return (
+        <input {...this.props} type='text' className={classes} />
+      );
+    }
   }
 }
 
 TextFieldInput.propType = {
   className: React.PropTypes.string,
-  id: React.PropTypes.string
+  id: React.PropTypes.string,
+  floating: React.PropTypes.bool,
+  label: React.PropTypes.string,
 };
 
 module.exports = TextFieldInput;
