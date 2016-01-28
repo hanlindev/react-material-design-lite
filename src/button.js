@@ -12,14 +12,14 @@ const baseClasses = {
 class Button extends React.Component {
 
   componentDidMount(){
-    const { ripple } = this.props;
-
-    const node = this._element;
-    mdl.upgradeElement(node, 'MaterialButton');
-
-    if(ripple){
-      mdl.upgradeElement(node, 'MaterialRipple');
-    }
+    //const { ripple } = this.props;
+    //
+    //const node = this._element;
+    //mdl.upgradeElement(node, 'MaterialButton');
+    //
+    //if(ripple){
+    //  mdl.upgradeElement(node, 'MaterialRipple');
+    //}
   }
 
   componentWillUnmount(){
