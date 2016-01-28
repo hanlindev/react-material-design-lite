@@ -54,11 +54,19 @@ class Button extends React.Component {
 
     const saveRef = (element) => this._element = element;
 
-    return (
-      <button {...this.props} ref={saveRef} className={classes}>
-        {children}
-      </button>
-    );
+    if (this.props.anchor) {
+      return (
+        <a {...this.props} ref={saveRef} className={classes}>
+          {children}
+        </a>
+      )
+    } else {
+      return (
+        <button {...this.props} ref={saveRef} className={classes}>
+          {children}
+        </button>
+      );
+    }
   }
 }
 
@@ -71,7 +79,8 @@ Button.propTypes = {
   primary: React.PropTypes.bool,
   accent: React.PropTypes.bool,
   icon: React.PropTypes.bool,
-  mini: React.PropTypes.bool
+  mini: React.PropTypes.bool,
+  anchor: React.PropTypes.bool
 };
 
 module.exports = Button;
