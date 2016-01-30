@@ -3,6 +3,7 @@
 const React = require('react');
 const mdl = require('material-design-lite/material.min');
 const classnames = require('classnames');
+const reactRouterRedux = require('react-router-redux');
 
 const baseClasses = {
   'mdl-button': true,
@@ -38,7 +39,8 @@ class Button extends React.Component {
       primary,
       accent,
       icon,
-      mini
+      mini,
+      dispatch
     } = this.props;
 
     const classes = classnames(baseClasses, {
@@ -52,17 +54,26 @@ class Button extends React.Component {
       'mdl-button--mini-fab': floating && mini
     }, className);
 
-    const saveRef = (element) => this._element = element;
 
+    var onClick = this.props.onclick || function(e) { };
+    if (this.props.link) {
+      var navigateTo = this.props.link;
+      onClick = function(e) {
+        e.preventDefault();
+        dispatch(reactRouterRedux.routeActions.push(navigateTo));
+      }
+    }
+
+    const saveRef = (element) => this._element = element;
     if (this.props.anchor) {
       return (
-        <a {...this.props} ref={saveRef} className={classes}>
+        <a {...this.props} ref={saveRef} className={classes} onclick={onClick}>
           {children}
         </a>
       )
     } else {
       return (
-        <button {...this.props} ref={saveRef} className={classes}>
+        <button {...this.props} ref={saveRef} className={classes} onclick={onClick}>
           {children}
         </button>
       );
@@ -80,7 +91,9 @@ Button.propTypes = {
   accent: React.PropTypes.bool,
   icon: React.PropTypes.bool,
   mini: React.PropTypes.bool,
-  anchor: React.PropTypes.bool
+  anchor: React.PropTypes.bool,
+  link: React.PropTypes.string,
+  dispatch: React.PropTypes.func
 };
 
 module.exports = Button;
