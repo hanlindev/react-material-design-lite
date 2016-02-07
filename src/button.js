@@ -24,8 +24,8 @@ class Button extends React.Component {
   }
 
   componentWillUnmount(){
-    const node = this._element;
-    mdl.downgradeElements(node);
+    //const node = this._element;
+    //mdl.downgradeElements(node);
   }
 
   render(){
