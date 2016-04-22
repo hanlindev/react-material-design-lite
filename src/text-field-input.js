@@ -18,7 +18,8 @@ class TextFieldInput extends React.Component {
       {
         'mdl-textfield': true,
         'mdl-js-textfield': true,
-        'mdl-textfield--floating-label': this.props.floating
+        'mdl-textfield--floating-label': this.props.floating,
+        'is-invalid': this.props.error
       }
     )
 
