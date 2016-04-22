@@ -34,6 +34,7 @@ class TextFieldInput extends React.Component {
           <label className="mdl-textfield__label" htmlFor={this.props.id}>
             {this.props.label}
           </label>
+          <span className="mdl-textfield__error">{this.props.error}</span>
         </div>
       );
     } else {
@@ -50,6 +51,7 @@ TextFieldInput.propType = {
   floating: React.PropTypes.bool,
   label: React.PropTypes.string,
   type: React.PropTypes.string.isRequired,
+  error: React.PropTypes.string
 };
 
 module.exports = TextFieldInput;
