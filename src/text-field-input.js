@@ -19,7 +19,7 @@ class TextFieldInput extends React.Component {
         'mdl-textfield': true,
         'mdl-js-textfield': true,
         'mdl-textfield--floating-label': this.props.floating,
-        'is-invalid': this.props.error,
+        'is-invalid': this.props.error || (this.props.required && !this.props.value),
         'is-dirty': this.props.value
       }
     )
@@ -54,7 +54,8 @@ TextFieldInput.propType = {
   label: React.PropTypes.string,
   type: React.PropTypes.string.isRequired,
   error: React.PropTypes.string,
-  value: React.PropTypes.string
+  value: React.PropTypes.string,
+  required: React.PropTypes.bool
 };
 
 module.exports = TextFieldInput;
