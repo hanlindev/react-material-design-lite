@@ -2,6 +2,7 @@
 
 const React = require('react');
 const classnames = require('classnames');
+const _ = require('lodash');
 
 const baseClasses = {
   'mdl-textfield__input': true
@@ -19,7 +20,10 @@ class TextFieldInput extends React.Component {
         'mdl-textfield': true,
         'mdl-js-textfield': true,
         'mdl-textfield--floating-label': this.props.floating,
-        'is-invalid': this.props.error || (this.props.required && !this.props.value),
+        'is-invalid':
+          (!_.isUndefined(this.props.valid) && !this.props.valid) ||
+          this.props.error ||
+          (this.props.required && !this.props.value),
         'is-dirty': this.props.value
       }
     )
@@ -55,7 +59,8 @@ TextFieldInput.propType = {
   type: React.PropTypes.string.isRequired,
   error: React.PropTypes.string,
   value: React.PropTypes.string,
-  required: React.PropTypes.bool
+  required: React.PropTypes.bool,
+  valid: React.PropTypes.bool
 };
 
 module.exports = TextFieldInput;
