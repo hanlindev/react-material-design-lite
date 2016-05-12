@@ -51,7 +51,7 @@ class Checkbox extends React.Component {
     const saveRef = (element) => this._element = element;
 
     return (
-      <label ref={saveRef} htmlFor={id} className={labelClasses}>
+      <label ref={saveRef} htmlFor={id} className={labelClasses} style={this.props.style}>
         <input {...this.props} id={id} type='checkbox' className={inputClasses} />
         {labelField}
       </label>
@@ -63,7 +63,8 @@ Checkbox.propTypes = {
   className: React.PropTypes.string,
   id: React.PropTypes.string,
   ripple: React.PropTypes.bool,
-  label: React.PropTypes.string
+  label: React.PropTypes.string,
+  style: React.PropTypes.object
 };
 
 module.exports = Checkbox;
