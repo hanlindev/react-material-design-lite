@@ -34,7 +34,9 @@ class Checkbox extends React.Component {
       className,
       ripple,
       label,
-      id = this._autoId
+      style,
+      id = this._autoId,
+      ...others
     } = this.props;
 
     const labelClasses = classnames(labelBaseClasses, {
@@ -51,8 +53,8 @@ class Checkbox extends React.Component {
     const saveRef = (element) => this._element = element;
 
     return (
-      <label ref={saveRef} htmlFor={id} className={labelClasses} style={this.props.style}>
-        <input {...this.props} id={id} type='checkbox' className={inputClasses} />
+      <label ref={saveRef} htmlFor={id} className={labelClasses} style={style}>
+        <input {...others} id={id} type='checkbox' className={inputClasses} />
         {labelField}
       </label>
     );
@@ -64,7 +66,8 @@ Checkbox.propTypes = {
   id: React.PropTypes.string,
   ripple: React.PropTypes.bool,
   label: React.PropTypes.string,
-  style: React.PropTypes.object
+  style: React.PropTypes.object,
+  checked: React.PropTypes.boolean
 };
 
 module.exports = Checkbox;
